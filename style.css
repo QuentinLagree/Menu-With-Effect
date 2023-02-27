@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFFFFF;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.burger-icon {
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 3;
+    transition: .3s;
+}
+
+.burger-icon .layers {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 5px;
+    border-radius: 1.5px;
+    background-color: #08133a;
+    transition: .3s;
+}
+
+.burger-icon .layers:after,
+.burger-icon .layers:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background-color: #08133a;
+    transition: .3s;
+}
+
+.burger-icon .layers:after {
+    top: 15px;
+}
+
+.burger-icon .layers:before {
+    top: -15px;
+}
+
+.burger-icon.active .layers {
+    background-color: transparent;
+}
+
+.burger-icon.active .layers:after {
+    top: 0;
+    rotate: -45deg;
+    background-color: #FFFFFF;
+}
+
+.burger-icon.active .layers:before {
+    top: 0;
+    rotate: 45deg;
+    background-color: #FFFFFF;
+}
+
+nav {
+    background: #08133a;
+    width: 100%;
+    height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 0;
+    height: 100vh;
+    position: absolute;
+    transform: translateX(100%);
+    right: 0;
+    transition: .5s ease-in-out;
+}
+
+nav.open {
+    transform: translateX(0);
+        padding-left: 25%;
+}
+
+nav ul {
+    position: absolute;
+    list-style-type: none;
+    transition: .4s;
+}
+
+nav ul li {
+    opacity: 0;
+    margin: 50px 0;
+    display: flex;
+    align-items: center;
+    transition: .4s all;
+}
+
+nav ul li a {
+    position: relative;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "Anton";
+    letter-spacing: 1px;
+    font-size: 3em;
+    z-index: 2;
+}
+
+
+nav.open ul li:nth-child(1) {
+    animation: display .5s forwards .6s;
+}
+nav.open ul li:nth-child(2) {
+    animation: display .5s forwards .85s;
+}
+nav.open ul li:nth-child(3) {
+    animation: display .5s forwards 1s;
+}
+nav.open ul li:nth-child(4) {
+    animation: display .5s forwards 1.25s;
+}
+
+nav ul li a span {
+    position: absolute;   
+    width: 0;
+    height: 10px;
+    z-index: -1;
+    background-color: #FB3640;
+    bottom: 0;
+    right: 0;
+    border-radius: 10px;
+    transition: .5s;
+}
+
+nav ul li a:hover span {
+    left: 0;
+    width: 100%;
+    opacity: 1;
+}
+
+@keyframes display {
+    100% {
+        opacity: 1;
+        margin-left: 40px;
+    }
+}
+@keyframes not-display {
+    100% {
+        opacity: 0;
+        margin-left: 0px;
+    }
+}
